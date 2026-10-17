@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Каталог — AURA Beauty</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="catalog.html">
+
+  <header id="siteHeader"></header>
+
+  <main>
+    <div class="container">
+      <nav class="breadcrumbs"><a href="index.html">Главная</a><span class="sep">/</span><span>Каталог</span></nav>
+      <div class="page-title">
+        <h1>Каталог косметики</h1>
+        <p class="sub">Уход за кожей, макияж, парфюмерия и уход за волосами.</p>
+      </div>
+
+      <div class="catalog-layout">
+        <!-- Фильтры -->
+        <aside class="filter-panel">
+          <h3>Фильтры</h3>
+
+          <div class="filter-group">
+            <span class="fg-title">Категория</span>
+            <div id="categoryFilters"></div>
+          </div>
+
+          <div class="filter-group">
+            <span class="fg-title">Цена, ₽</span>
+            <div class="price-range">
+              <input type="number" id="priceMin" min="0" placeholder="от">
+              <span style="color:var(--ink-soft)">—</span>
+              <input type="number" id="priceMax" min="0" placeholder="до">
+            </div>
+          </div>
+
+          <button class="btn btn--ghost btn--block" type="button" id="resetFilters">Сбросить фильтры</button>
+        </aside>
+
+        <!-- Список товаров -->
+        <div>
+          <div class="catalog-top">
+            <div class="search-field">
+              <input type="search" id="searchInput" placeholder="Поиск по названию…" aria-label="Поиск">
+            </div>
+            <select class="sort-select" id="sortSelect" aria-label="Сортировка">
+              <option value="popular">Сначала популярные</option>
+              <option value="price-asc">Сначала дешевле</option>
+              <option value="price-desc">Сначала дороже</option>
+              <option value="rating">По рейтингу</option>
+            </select>
+          </div>
+
+          <p class="catalog-count" id="catalogCount"></p>
+          <div class="catalog-grid" id="catalogGrid"></div>
+
+          <div class="empty-state hide" id="catalogEmpty">
+            <div class="big">🔍</div>
+            <h3>Ничего не найдено</h3>
+            <p>Попробуйте изменить запрос или сбросить фильтры.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer id="siteFooter"></footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/catalog.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

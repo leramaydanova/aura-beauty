@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="880" viewBox="0 0 800 880" role="img" aria-label="Композиция косметики AURA Beauty">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f3e3e5"/>
+      <stop offset="1" stop-color="#e9c9cd"/>
+    </linearGradient>
+    <linearGradient id="b1" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f7e2e4"/>
+      <stop offset="1" stop-color="#e7b3b9"/>
+    </linearGradient>
+    <linearGradient id="b2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#efe3cf"/>
+      <stop offset="1" stop-color="#dcbf8e"/>
+    </linearGradient>
+    <linearGradient id="b3" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3a2f2b"/>
+      <stop offset="1" stop-color="#241c18"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="880" fill="url(#bg)" rx="28"/>
+
+  <!-- Декоративные круги -->
+  <circle cx="680" cy="140" r="120" fill="rgba(255,255,255,.25)"/>
+  <circle cx="110" cy="760" r="150" fill="rgba(255,255,255,.2)"/>
+
+  <!-- Банка крема слева -->
+  <g>
+    <ellipse cx="220" cy="330" rx="110" ry="24" fill="rgba(0,0,0,.06)"/>
+    <rect x="130" y="360" width="180" height="26" rx="10" fill="#dba7ad"/>
+    <rect x="120" y="386" width="200" height="210" rx="22" fill="url(#b1)"/>
+    <rect x="120" y="386" width="200" height="44" rx="22" fill="rgba(255,255,255,.35)"/>
+    <text x="220" y="510" text-anchor="middle" font-family="Georgia, serif" font-size="30" fill="#8c4a55" letter-spacing="6">AURA</text>
+    <text x="220" y="545" text-anchor="middle" font-family="Georgia, serif" font-size="16" fill="#8c4a55" letter-spacing="3">BELLIS</text>
+  </g>
+
+  <!-- Флакон парфюма справа -->
+  <g>
+    <rect x="530" y="250" width="34" height="90" rx="8" fill="#6b4a52"/>
+    <circle cx="547" cy="240" r="26" fill="#dba7ad"/>
+    <rect x="502" y="340" width="90" height="250" rx="26" fill="url(#b3)"/>
+    <rect x="502" y="340" width="90" height="46" rx="26" fill="rgba(255,255,255,.14)"/>
+    <text x="547" y="470" text-anchor="middle" font-family="Georgia, serif" font-size="22" fill="#e9c9cd" letter-spacing="5">AURA</text>
+    <text x="547" y="502" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#cfc6c0" letter-spacing="2">ROSE D'AUBE</text>
+    <ellipse cx="547" cy="590" rx="60" ry="14" fill="rgba(0,0,0,.08)"/>
+  </g>
+
+  <!-- Маленький тюбик -->
+  <g transform="rotate(14 700 500)">
+    <rect x="640" y="480" width="120" height="34" rx="12" fill="url(#b2)"/>
+    <rect x="640" y="480" width="34" height="34" rx="12" fill="rgba(255,255,255,.35)"/>
+    <rect x="684" y="496" width="12" height="130" rx="5" fill="#c9a15a"/>
+    <rect x="678" y="620" width="24" height="16" rx="6" fill="#c9a15a"/>
+  </g>
+
+  <!-- Цветок-декор -->
+  <g transform="translate(420 190) rotate(-12)">
+    <circle cx="0" cy="0" r="26" fill="#fff3e0" opacity=".9"/>
+    <circle cx="30" cy="0" r="20" fill="#fff3e0" opacity=".7"/>
+    <circle cx="-30" cy="0" r="20" fill="#fff3e0" opacity=".7"/>
+    <circle cx="0" cy="30" r="20" fill="#fff3e0" opacity=".7"/>
+    <circle cx="0" cy="-30" r="20" fill="#fff3e0" opacity=".7"/>
+    <circle cx="0" cy="0" r="12" fill="#e8b84b"/>
+  </g>
+</svg>

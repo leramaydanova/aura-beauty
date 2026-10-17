@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AURA Beauty — косметика и парфюмерия</title>
+  <meta name="description" content="Интернет-витрина бренда AURA Beauty: уход за кожей, макияж, парфюмерия и уход за волосами.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="index.html">
+
+  <header id="siteHeader"></header>
+
+  <main>
+    <!-- Герой -->
+    <section class="hero container">
+      <div class="hero__content">
+        <span class="hero__kicker">Косметика с характером</span>
+        <h1>Красота, которая начинается <em>с заботы</em> о себе</h1>
+        <p class="lead">Натуральные формулы, деликатные текстуры и ароматы, которые остаются в памяти. Подобрали средства, чтобы ухаживать за собой было приятно каждый день.</p>
+        <div class="hero__cta">
+          <a class="btn" href="catalog.html">Перейти в каталог</a>
+          <a class="btn btn--outline" href="about.html">Узнать о бренде</a>
+        </div>
+        <div class="hero__stats">
+          <div class="hero__stat"><b>120+</b><span>средств в каталоге</span></div>
+          <div class="hero__stat"><b>98%</b><span>натуральных компонентов</span></div>
+          <div class="hero__stat"><b>4.9</b><span>средняя оценка</span></div>
+        </div>
+      </div>
+      <div class="hero__visual reveal">
+        <img src="js/assets/hero.svg" alt="Набор косметики AURA Beauty">
+        <div class="hero__card-float">
+          <span style="font-size:26px">🌹</span>
+          <div>
+            <b>Rose d’Aube</b>
+            <span>парфюм · ноты розы и мускуса</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Категории -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="kicker">Категории</span>
+            <h2>Что ищете сегодня?</h2>
+            <p class="sub">Уход, макияж и ароматы — на любой случай.</p>
+          </div>
+          <a class="link-more" href="catalog.html">Весь каталог →</a>
+        </div>
+        <div class="cats" id="homeCats"><!-- заполняется скриптом --></div>
+      </div>
+    </section>
+
+    <!-- Хиты -->
+    <section class="section section--tinted">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="kicker">Выбор покупателей</span>
+            <h2>Хиты продаж</h2>
+            <p class="sub">То, что покупают чаще всего и хвалят в отзывах.</p>
+          </div>
+          <a class="link-more" href="catalog.html">Смотреть все →</a>
+        </div>
+        <div class="catalog-grid" id="homeHits"><!-- заполняется скриптом --></div>
+      </div>
+    </section>
+
+    <!-- Преимущества -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="kicker">Почему мы</span>
+            <h2>Забота на каждом этапе</h2>
+          </div>
+        </div>
+        <div class="features">
+          <div class="feature reveal"><div class="feature__icon">🌿</div><h3>Без жестокости</h3><p>Не тестируем на животных и используем растительные экстракты.</p></div>
+          <div class="feature reveal"><div class="feature__icon">🚚</div><h3>Бесплатная доставка</h3><p>От 3 000 ₽ по всей России. Возврат в течение 30 дней.</p></div>
+          <div class="feature reveal"><div class="feature__icon">🧪</div><h3>Состав на виду</h3><p>Полная композиция каждого средства опубликована на странице товара.</p></div>
+          <div class="feature reveal"><div class="feature__icon">💌</div><h3>Подарки к заказу</h3><p>Пробники новых средств — в каждой коробке в подарок.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Отзывы -->
+    <section class="section section--tinted">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="kicker">Отзывы</span>
+            <h2>Что говорят наши покупатели</h2>
+          </div>
+        </div>
+        <div class="reviews-grid">
+          <div class="review reveal">
+            <div class="review__stars">★★★★★</div>
+            <p>Крем «Роза и гиалурон» стал моим фаворитом. Кожа мягкая, тон ровный, запах нежный. Заказываю второй раз!</p>
+            <div class="review__author">
+              <div class="review__avatar">АК</div>
+              <div><b>Алина К.</b><span>Москва · заказ сегодня</span></div>
+            </div>
+          </div>
+          <div class="review reveal">
+            <div class="review__stars">★★★★★</div>
+            <p>Парфюм Rose d’Aube — восторг! Стойкий, но не навязчивый, комплименты сыплются весь день. Упаковка шикарная.</p>
+            <div class="review__author">
+              <div class="review__avatar">МС</div>
+              <div><b>Мария С.</b><span>Санкт-Петербург · 2 дня назад</span></div>
+            </div>
+          </div>
+          <div class="review reveal">
+            <div class="review__stars">★★★★½</div>
+            <p>Быстрая доставка, всё аккуратно упаковано. Сыворотка с витамином C реально осветляет. Рекомендую магазин!</p>
+            <div class="review__author">
+              <div class="review__avatar">ДВ</div>
+              <div><b>Дарья В.</b><span>Казань · 5 дней назад</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Подписка -->
+    <section class="section">
+      <div class="container">
+        <div class="newsletter">
+          <div>
+            <h2>Получайте скидки и новинки</h2>
+            <p>Подпишитесь на рассылку — и мы пришлём промокод на скидку 15% к первому заказу.</p>
+          </div>
+          <form id="subscribeForm" novalidate>
+            <div class="newsletter__form">
+              <input type="email" id="subscribeEmail" placeholder="Ваш e-mail" required>
+              <button class="btn btn--dark" type="submit">Подписаться</button>
+            </div>
+            <p class="form-note" id="subscribeNote"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="siteFooter"></footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/index.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

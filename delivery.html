@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Доставка и оплата — AURA Beauty</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="delivery.html">
+
+  <header id="siteHeader"></header>
+
+  <main>
+    <div class="container">
+      <nav class="breadcrumbs"><a href="index.html">Главная</a><span class="sep">/</span><span>Доставка и оплата</span></nav>
+      <div class="page-title">
+        <h1>Доставка и оплата</h1>
+        <p class="sub">Как мы отправляем заказы и как за них можно заплатить.</p>
+      </div>
+
+      <div class="info-grid">
+        <div>
+          <div class="info-block reveal">
+            <h2>Доставка</h2>
+            <h3>По России — курьерская служба</h3>
+            <ul>
+              <li>До пункта выдачи — 290 ₽, бесплатно от 3 000 ₽.</li>
+              <li>Курьером до двери — 390 ₽, бесплатно от 5 000 ₽.</li>
+              <li>Срок — 2–5 рабочих дней после отправки.</li>
+                </ul>
+            <h3>По Москве и Санкт-Петербургу</h3>
+            <ul>
+              <li>Экспресс-доставка в день заказа — 490 ₽.</li>
+              <li>Интервал доставки выбираете вы: с 9:00 до 22:00.</li>
+            </ul>
+            <h3>Самовывоз</h3>
+            <ul>
+              <li>Москва, ул. Садовая, 12 — бесплатно, пункт выдачи работает ежедневно.</li>
+            </ul>
+          </div>
+
+          <div class="info-block reveal" id="returns" style="margin-top:22px">
+            <h2>Оплата</h2>
+            <ul>
+              <li>Карты Visa, Mastercard, МИР.</li>
+              <li>СБП — скидка 3% по промокоду SBP3.</li>
+              <li>Наличные при получении (для экспресс-доставки по Москве).</li>
+            </ul>
+            <h2 style="margin-top:24px">Возврат</h2>
+            <p>Не подошёл товар? В течение 30 дней вернём деньги без лишних вопросов, если упаковка не была вскрыта. Для косметики — важно сохранить заводскую плёнку.</p>
+          </div>
+        </div>
+
+        <div>
+          <div class="info-block reveal" id="faq">
+            <h2>Вопросы и ответы</h2>
+            <h3>Как быстро приходит заказ?</h3>
+            <p>Обычно 2–5 дней. Отправляем каждый день, кроме воскресенья.</p>
+            <h3>Можно ли сменить адрес доставки?</h3>
+            <p>Да, до момента отправки заказа — напишите нам, и мы всё поправим.</p>
+            <h3>Что внутри коробки?</h3>
+            <p>Заказ, подарочная упаковка, пробники новинок и бренд-чеклист по уходу.</p>
+            <h3>Как получить промокод на скидку?</h3>
+            <p>Подпишитесь на рассылку на главной странице — пришлём 15% на первый заказ.</p>
+          </div>
+
+          <div class="form-card reveal" style="margin-top:22px" id="form">
+            <h2 style="font-size:22px;font-family:var(--ff-serif);margin-bottom:6px">Остались вопросы?</h2>
+            <p style="font-size:14px;color:var(--ink-soft);margin-bottom:18px">Напишите нам — ответим в течение рабочего дня.</p>
+
+            <form id="contactForm" novalidate>
+              <div class="form-row">
+                <div>
+                  <label for="cfName">Имя</label>
+                  <input type="text" id="cfName" placeholder="Как к вам обращаться" required>
+                  <p class="field-err hide" id="errName">Укажите имя</p>
+                </div>
+                <div>
+                  <label for="cfEmail">E-mail</label>
+                  <input type="email" id="cfEmail" placeholder="you@mail.ru" required>
+                  <p class="field-err hide" id="errEmail">Введите корректный e-mail</p>
+                </div>
+              </div>
+              <label for="cfTopic">Тема</label>
+              <select id="cfTopic">
+                <option>Вопрос по заказу</option>
+                <option>Доставка и оплата</option>
+                <option>Возврат</option>
+                <option>Сотрудничество</option>
+              </select>
+              <label for="cfMsg">Сообщение</label>
+              <textarea id="cfMsg" placeholder="Опишите вопрос подробнее" required></textarea>
+              <p class="field-err hide" id="errMsg">Напишите сообщение (от 10 символов)</p>
+
+              <button class="btn btn--dark" type="submit">Отправить</button>
+              <p class="form-note" id="contactNote"></p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer id="siteFooter"></footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    /* Валидация формы обратной связи */
+    const form = document.getElementById('contactForm');
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+    function setErr(field, errId, bad) {
+      document.getElementById(field).style.borderColor = bad ? 'var(--danger)' : '';
+      document.getElementById(errId).classList.toggle('hide', !bad);
+    }
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const name = document.getElementById('cfName').value.trim();
+      const email = document.getElementById('cfEmail').value.trim();
+      const msg = document.getElementById('cfMsg').value.trim();
+      const note = document.getElementById('contactNote');
+
+      let ok = true;
+      setErr('cfName', 'errName', name.length < 2); ok = ok && name.length >= 2;
+      setErr('cfEmail', 'errEmail', !re.test(email)); ok = ok && re.test(email);
+      setErr('cfMsg', 'errMsg', msg.length < 10); ok = ok && msg.length >= 10;
+
+      if (!ok) {
+        note.textContent = 'Пожалуйста, исправьте выделенные поля.';
+        note.className = 'form-note err';
+        return;
+      }
+      note.textContent = 'Спасибо! Мы ответим на ваш вопрос в ближайшее время.';
+      note.className = 'form-note ok';
+      form.reset();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Избранное — AURA Beauty</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="favorites.html">
+
+  <header id="siteHeader"></header>
+
+  <main>
+    <div class="container">
+      <nav class="breadcrumbs"><a href="index.html">Главная</a><span class="sep">/</span><span>Избранное</span></nav>
+      <div class="page-title">
+        <h1>Избранное</h1>
+        <p class="sub" id="favSub"></p>
+      </div>
+
+      <div id="favoritesGrid" style="padding:26px 0 60px"></div>
+
+      <div class="empty-state hide" id="favEmpty">
+        <div class="big">💖</div>
+        <h3>Пока пусто</h3>
+        <p>Нажимайте на сердечко у товаров, чтобы собирать список понравившегося.</p>
+        <a class="btn" href="catalog.html" style="margin-top:18px">К каталогу</a>
+      </div>
+    </div>
+  </main>
+
+  <footer id="siteFooter"></footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/favorites.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
