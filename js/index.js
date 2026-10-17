@@ -7,7 +7,7 @@ function renderHome() {
   const catsEl = document.getElementById('homeCats');
   if (catsEl) {
     catsEl.innerHTML = Object.entries(CATEGORIES).map(([key, c]) => `
-      <a class="cat-tile" href="catalog.html?cat=${key}">
+      <a class="cat-tile" href="catalog.html?cat=${key}" data-mt-goal="category_click">
         <div class="cat-tile__icon">${c.icon}</div>
         <h3>${c.name}</h3>
         <p>${c.desc}</p>
@@ -46,5 +46,6 @@ document.addEventListener('DOMContentLoaded', () => {
     note.className = 'form-note ok';
     input.style.borderColor = 'var(--ok)';
     form.reset();
+    track('subscribe_user');
   });
 });

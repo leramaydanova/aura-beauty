@@ -49,7 +49,7 @@ function renderCard(product) {
         </div>
         <div class="card__actions">
           <button class="btn btn--sm" data-add-cart="${product.id}">В корзину</button>
-          <a class="btn btn--sm btn--ghost" href="product.html?id=${product.id}">Подробнее</a>
+          <a class="btn btn--sm btn--ghost" href="product.html?id=${product.id}" data-mt-goal="card_click">Подробнее</a>
         </div>
       </div>
     </article>`;
@@ -84,6 +84,7 @@ function addToCart(id, qty = 1) {
   saveCart(cart);
   renderCartModal();
   showToast('Товар добавлен в корзину ✨');
+  track('add_to_cart');
 }
 function changeQty(id, delta) {
   const cart = getCart();
@@ -119,6 +120,7 @@ function toggleFav(id) {
   } else {
     favs.push(id);
     showToast('Добавлено в избранное ♥');
+    track('add_to_fav');
   }
   localStorage.setItem(FAV_KEY, JSON.stringify(favs));
   updateCounters();
@@ -141,6 +143,21 @@ function updateCounters() {
     el.classList.toggle('hide', n === 0);
   });
 }
+
+/* ---------- Трекер событий (MyTracker / Mail.ru, ЛР5) ---------- */
+const MT_COUNTER_ID = '3805461';
+
+function track(goal) {
+  if (window._tmr && window._tmr.push) {
+    window._tmr.push({ id: MT_COUNTER_ID, type: 'reachGoal', goal: goal });
+  }
+}
+
+/* Клики по элементам с data-mt-goal — на всех страницах */
+document.addEventListener('click', e => {
+  const el = e.target.closest('[data-mt-goal]');
+  if (el) track(el.dataset.mtGoal);
+});
 
 /* ---------- Тост ---------- */
 function showToast(msg) {
@@ -193,6 +210,51 @@ function renderCartModal() {
       <button class="btn btn--block btn--dark" id="cartCheckoutBtn">Оформить заказ</button>
       <p style="font-size:12px;color:var(--ink-soft);margin-top:10px;text-align:center">Доставка — от 290 ₽, бесплатно от 3000 ₽</p>`;
   }
+}
+
+/* ---------- Счётчики статистики (ЛР3–ЛР5) ----------
+   Вызывается после вставки футера: inline-<script> из innerHTML
+   не выполняется браузером, поэтому код счётчиков запускаем здесь. */
+function initCounters() {
+  // ЛР3: LiveInternet — подставляем «живую» картинку 88×31
+  var lic = document.getElementById('licnt5DC3');
+  if (lic) {
+    lic.src =
+      'https://counter.yadro.ru/hit?t14.6;r' + escape(document.referrer) +
+      ((typeof (screen) == 'undefined') ? '' : ';s' + screen.width + '*' + screen.height + '*' +
+      (screen.colorDepth ? screen.colorDepth : screen.pixelDepth)) +
+      ';u' + escape(document.URL) +
+      ';h' + escape(document.title.substring(0, 150)) + ';' + Math.random();
+  }
+
+  // ЛР4: Top100 (Kraken)
+  (function (w, d, c) {
+    (w[c] = w[c] || []).push(function () {
+      var options = {
+        project: 7753070,
+        attributes_dataset: ['your-attribute'],
+        trackHashes: true,
+        user_id: null
+      };
+      try { w.top100Counter = new top100(options); } catch (e) { }
+    });
+    var n = d.getElementsByTagName('script')[0],
+        s = d.createElement('script'), f = function () { n.parentNode.insertBefore(s, n); };
+    s.type = 'text/javascript'; s.async = true;
+    s.src = (d.location.protocol == 'https:' ? 'https:' : 'http:') + '//st.top100.ru/top100/top100.js';
+    if (w.opera == '[object Opera]') { d.addEventListener('DOMContentLoaded', f, false); } else { f(); }
+  })(window, document, '_top100q');
+
+  // ЛР5: Top.Mail.Ru / MyTracker
+  var _tmr = window._tmr || (window._tmr = []);
+  _tmr.push({ id: MT_COUNTER_ID, type: 'pageView', start: (new Date()).getTime() });
+  (function (d, w, id) {
+    if (d.getElementById(id)) return;
+    var ts = d.createElement('script'); ts.type = 'text/javascript'; ts.async = true; ts.id = id;
+    ts.src = 'https://top-fwz1.mail.ru/js/code.js';
+    var f = function () { var s = d.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ts, s); };
+    if (w.opera == '[object Opera]') { d.addEventListener('DOMContentLoaded', f, false); } else { f(); }
+  })(document, window, 'tmr-code');
 }
 
 /* ---------- Шапка и подвал ---------- */
@@ -272,6 +334,29 @@ function renderChrome() {
             <span>© 2026 AURA Beauty. Учебный проект.</span>
             <span>Сделано с ♥ для практики вёрстки</span>
           </div>
+          <div class="counter-slot">
+
+            <!-- ЛР3: Счётчик LiveInternet.
+                 Картинка «оживает» в initCounters() — inline-скрипт
+                 через innerHTML браузер не выполняет. -->
+            <a href="https://www.liveinternet.ru/aura-beauty/click"
+              target="_blank"><img id="licnt5DC3" width="88" height="31" style="border:0"
+              title="LiveInternet: показано число просмотров за 24 часа, посетителей за 24 часа и за сегодня"
+              src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+              alt=""/></a>
+
+            <!-- ЛР4: Top100 (Kraken) — инициализация в initCounters() -->
+            <a href="https://top100.rambler.ru/navi?query=7753070" target="_blank">
+              <img class="widget-warm" src="https://kraken.rambler.ru/counter-static/images/top100_0062b1.gif"
+                title="Rambler's Top100" alt="Rambler's Top100" width="88" height="31" border="0">
+            </a>
+
+            <!-- ЛР5: Top.Mail.Ru / MyTracker — инициализация в initCounters() -->
+            <a href="https://top.mail.ru/jump?from=3805461" target="_blank">
+              <img class="widget-warm" src="https://top-fwz1.mail.ru/counter?id=3805461;t=479;l=50" style="border:0;" height="40" width="88" alt="Рейтинг Mail.ru" />
+            </a>
+
+          </div>
         </div>
       </footer>`;
   }
@@ -297,6 +382,7 @@ function renderChrome() {
   updateCounters();
   renderCartModal();
   bindCommonEvents();
+  initCounters();
 }
 
 /* ---------- Общие обработчики ---------- */
@@ -322,6 +408,7 @@ function bindCommonEvents() {
     else if (checkout) {
       modal.classList.remove('open');
       showToast('Заказ оформлен! Мы свяжемся с вами для подтверждения 🎉');
+      track('checkout');
       clearCart();
     }
   });

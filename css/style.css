@@ -441,6 +441,28 @@ ul { margin: 0; padding: 0; list-style: none; }
 .footer__brand p { font-size: 14px; margin-top: 14px; max-width: 30ch; }
 .footer__bottom { border-top: 1px solid rgba(255,255,255,.1); padding: 18px 0; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; font-size: 13px; color: #9a908a; }
 
+/* ---------- Блок счётчиков (ЛР3–ЛР5) ---------- */
+.counter-slot {
+  margin-top: 8px;
+  padding: 14px 0 8px;
+  border-top: 1px solid rgba(255,255,255,.1);
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+.counter-slot .widget-warm {
+  background: rgba(185, 123, 134, .12);   /* лёгкая розовая подложка под палитру сайта */
+  border: 2px solid #b97b86;               /* розовая окантовка */
+  border-radius: 6px;
+  padding: 3px 6px;
+  filter: sepia(0.55) saturate(1.15) brightness(1.04);
+  transition: filter .2s;
+}
+.counter-slot .widget-warm:hover { filter: none; }
+
 /* ---------- Модалка корзины ---------- */
 .modal { position: fixed; inset: 0; z-index: 100; display: none; }
 .modal.open { display: block; }

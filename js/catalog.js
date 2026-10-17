@@ -62,24 +62,31 @@ function initCatalog() {
       ? [...state.categories, v]
       : state.categories.filter(c => c !== v);
     renderCatalog();
+    track('filter_applied');
   });
 
   const priceMin = document.getElementById('priceMin');
   const priceMax = document.getElementById('priceMax');
-  [priceMin, priceMax].forEach(inp => inp.addEventListener('input', () => {
+  [priceMin, priceMax].forEach(inp => inp.addEventListener('change', () => {
     state.priceMin = priceMin.value === '' ? null : Number(priceMin.value);
     state.priceMax = priceMax.value === '' ? null : Number(priceMax.value);
     renderCatalog();
+    track('filter_applied');
   }));
 
+  // Поиск — отправляем событие с задержкой, чтобы не слать на каждый символ
+  let searchTimer = null;
   document.getElementById('searchInput').addEventListener('input', e => {
     state.query = e.target.value.trim().toLowerCase();
     renderCatalog();
+    clearTimeout(searchTimer);
+    searchTimer = setTimeout(() => track('search_used'), 800);
   });
 
   document.getElementById('sortSelect').addEventListener('change', e => {
     state.sort = e.target.value;
     renderCatalog();
+    track('sort_used');
   });
 
   document.getElementById('resetFilters').addEventListener('click', () => {
